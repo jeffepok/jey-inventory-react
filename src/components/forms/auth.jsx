@@ -1,8 +1,8 @@
-import AuthService from "../../services/auth/auth";
+import AuthService from "../../services/auth";
 import React from 'react';
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import * as actions from "../../store/auth";
+import * as actions from "../../store/user";
 
 export default function AuthForm(props) {
     const { type } = props;
@@ -11,8 +11,8 @@ export default function AuthForm(props) {
     const dispath = useDispatch();
     const navigate = useNavigate();
 
-    const username = useSelector(state => state.auth.username);
-    const password = useSelector(state => state.auth.password);
+    const username = useSelector(state => state.user.username);
+    const password = useSelector(state => state.user.password);
 
     const login = async (username, password) => {
         const authService = new AuthService();

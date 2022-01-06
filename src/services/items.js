@@ -1,6 +1,6 @@
 import axios from 'axios';
-import * as constants from '../../utils/constants';
-import AuthService from '../auth/auth';
+import * as constants from '../utils/constants';
+import AuthService from './auth';
 
 export default class ItemsService {
     async getItems() {

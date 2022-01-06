@@ -1,5 +1,5 @@
 import axios from 'axios';
-import * as constants from "../../utils/constants";
+import * as constants from "../utils/constants";
 
 export default class AuthService {
 

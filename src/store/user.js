@@ -1,4 +1,4 @@
-import AuthService from "../services/auth/auth";
+import AuthService from "../services/auth";
 
 // Action Types
 const USERNAME_ENTERED = "usernameEntered";

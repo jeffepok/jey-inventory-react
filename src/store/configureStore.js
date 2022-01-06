@@ -1,8 +1,8 @@
 import { createStore, combineReducers } from "redux";
-import authReducer from "./auth";
+import userReducer from "./user";
 import itemsReducer from "./items";
 
-const allReducers = combineReducers({ auth: authReducer, items: itemsReducer });
+const allReducers = combineReducers({ user: userReducer, items: itemsReducer });
 
 export default function configureStore() {
     const store = createStore(
