@@ -3,9 +3,16 @@ import NavBar from '../navbar/navbar';
 import Card from '../card/card';
 import { useSelector } from 'react-redux';
 
+
+
 export default function ItemListing() {
     const items = useSelector(state => state.items);
 
+    const ItemImage = (props) => {
+        return (
+            <img src={props.src} alt="Item" />
+        )
+    }
     return (
         <>
             <NavBar></NavBar>
@@ -15,7 +22,7 @@ export default function ItemListing() {
                         {items.map((item) => {
                             return (
                                 <div key={item.id} className="w-full md:w-1/2 xl:w-1/3 p-3">
-                                    <Card title={item.name} subtitle={item.description}></Card>
+                                    <Card title={item.name} subtitle={item.description} leading={<ItemImage src={item.image} />} />
                                 </div>
                             )
                         })}

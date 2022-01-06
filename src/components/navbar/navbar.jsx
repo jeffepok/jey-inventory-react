@@ -1,8 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from "react-router-dom";
 import AuthService from '../../services/auth';
-import * as actions from '../../store/user';
+import * as userActions from '../../store/user';
 import { useDispatch, useSelector } from 'react-redux';
+import ItemsService from '../../services/items';
+import UserService from '../../services/user';
+import * as itemsActions from '../../store/items';
 
 export default function NavBar() {
   const [showUserMenu, setShowUserMenu] = useState(false);
@@ -10,14 +13,33 @@ export default function NavBar() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const logout = () => {
-    console.log("log out clicked");
     const authService = new AuthService();
     const loggedOut = authService.logout();
     if (loggedOut) {
-      dispatch(actions.loggedOut());
+      dispatch(userActions.loggedOut());
       navigate("/login");
     }
   }
+  const isAuthenticated = useSelector(state => state.user.isAuthenticated);
+  const items = useSelector(state => state.items);
+
+  useEffect(()=>{
+    if (isAuthenticated) {
+      if(!items.length){
+        const itemsService = new ItemsService();
+        itemsService.getItems().then(response =>{
+            dispatch(itemsActions.itemsRetrieved(response.data));
+        });
+      }
+  
+      if(!username) {
+        const userService = new UserService();
+        userService.getUserDetails().then(response =>{
+          dispatch(userActions.userDetailsRetrieved(response.data));
+        })
+      }
+    }
+  }, [])
   const currentLocation = window.location.pathname;
   
   return (

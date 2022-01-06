@@ -7,6 +7,7 @@ const LOGGED_IN = "loggedIn";
 const LOGGED_OUT = "loggedOut";
 const LOADING_COMPLETED = "loadingCompleted";
 const LOADING_STARTED = "loadingStarted";
+const USER_DETAILS_RETRIEVED = "userDetailsRetrieved";
 
 // Actions Creators
 export const usernameEntered = (username) =>{
@@ -44,12 +45,19 @@ export const loggedOut = () =>{
         type: LOGGED_OUT
     }
 }
+export const userDetailsRetrieved = (userDetails) =>{
+    return {
+        type: USER_DETAILS_RETRIEVED,
+        payload: userDetails
+    }
+}
 // Reducer
 const authService = new AuthService();
 
 const initialState = {
     username: "",
     password: "",
+    email: "",
     isAuthenticated: authService.getToken() ? true : false,
     loading: false
 }
@@ -91,6 +99,12 @@ export default function reducer(state = initialState, action) {
             return {
                 ...state,
                 isAuthenticated: false
+            }
+        case USER_DETAILS_RETRIEVED:
+            return {
+                ...state,
+                email: action.payload.email,
+                username: action.payload.username
             }
 
         default: return state
