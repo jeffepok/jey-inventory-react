@@ -2,6 +2,7 @@ import React from 'react';
 import NavBar from '../navbar/navbar';
 import Card from '../card/card';
 import { useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
 
 
 
@@ -22,7 +23,9 @@ export default function ItemListing() {
                         {items.map((item) => {
                             return (
                                 <div key={item.id} className="w-full md:w-1/2 xl:w-1/3 p-3">
-                                    <Card title={item.name} subtitle={item.description} leading={<ItemImage src={item.image} />} />
+                                    <Link to="/" >
+                                        <Card title={item.name} subtitle={item.description} leading={<ItemImage src={item.image} />} />
+                                    </Link>
                                 </div>
                             )
                         })}
