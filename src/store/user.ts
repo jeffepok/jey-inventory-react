@@ -1,3 +1,4 @@
+import { User } from "../interfaces";
 import AuthService from "../services/auth";
 
 // Action Types
@@ -10,13 +11,13 @@ const LOADING_STARTED = "loadingStarted";
 const USER_DETAILS_RETRIEVED = "userDetailsRetrieved";
 
 // Actions Creators
-export const usernameEntered = (username) =>{
+export const usernameEntered = (username: String) =>{
     return {
         type: USERNAME_ENTERED,
         payload: username
     }
 };
-export const passwordEntered = (password) =>{
+export const passwordEntered = (password: String) =>{
     return {
         type: PASSWORD_ENTERED,
         payload: password
@@ -45,7 +46,7 @@ export const loggedOut = () =>{
         type: LOGGED_OUT
     }
 }
-export const userDetailsRetrieved = (userDetails) =>{
+export const userDetailsRetrieved = (userDetails: User) =>{
     return {
         type: USER_DETAILS_RETRIEVED,
         payload: userDetails

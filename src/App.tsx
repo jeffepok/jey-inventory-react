@@ -9,16 +9,16 @@ import ItemDetail from "./components/pages/itemDetail";
 
 export default function App() {
   return (
-    <>      
+    <>
       <Routes>
         <Route path="" element={<SplashScreen />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/dashboard" element={<ProtectedRoute />}>
+        <Route path="/dashboard" element={<ProtectedRoute component={null} />}>
           <Route path="/dashboard" element={<Dashboard />} />
         </Route>
-        <Route path="/items" element={<ProtectedRoute />}>
-          <Route path="/items" element={<ItemListing/>}></Route>
-          <Route path="/items/:id" element={<ItemDetail/>}></Route>
+        <Route path="/items" element={<ProtectedRoute component={null}/>}>
+          <Route path="/items" element={<ItemListing/>}/>
+          <Route path="/items/:id" element={<ItemDetail/>}/>
         </Route>
       </Routes>
     </>

@@ -1,13 +1,21 @@
 import { useSelector } from "react-redux";
+import { Item, State } from "../../interfaces";
 import NavBar from "../navbar/navbar";
 
 export default function ItemDetail() {
     const itemId = window.location.pathname.split('/').at(-1);
-    let items = useSelector(state => state.items);
+    let items = useSelector((state: State) => state.items);
     items = items.filter(item => {
         return item.id.toString() === itemId;
     })
-    const item = items.length ? items[0] : {};
+    const item: Item = items.length ? items[0] : {
+        id: '',
+        name: '',
+        price: 0,
+        image: '',
+        owner: '',
+        description: ''
+    } as Item;
     return (
         <>
             <NavBar></NavBar>

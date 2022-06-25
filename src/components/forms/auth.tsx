@@ -3,6 +3,7 @@ import React from 'react';
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import * as actions from "../../store/user";
+import { State } from "../../interfaces";
 
 export default function AuthForm(props) {
     const { type } = props;
@@ -11,10 +12,10 @@ export default function AuthForm(props) {
     const dispath = useDispatch();
     const navigate = useNavigate();
 
-    const username = useSelector(state => state.user.username);
-    const password = useSelector(state => state.user.password);
+    const username = useSelector((state: State) => state.user.username);
+    const password = useSelector((state: State) => state.user.password);
 
-    const login = async (username, password) => {
+    const login = async (username:string, password:string) => {
         const authService = new AuthService();
         
         try {

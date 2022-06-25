@@ -1,4 +1,4 @@
-import axios from 'axios';
+import axios, { AxiosResponse } from 'axios';
 import * as constants from '../utils/constants';
 import AuthService from './auth';
 
@@ -10,11 +10,11 @@ export default class UserService {
         const config = {
             headers: { Authorization: `Token ${token}` }
         };
-        let response;
+        let response: AxiosResponse;
         try {
             response = await axios.get(url, config);
         }catch(e){
-            response = {error: "An error occurred"};
+            response = e;
         }
         return response;
     }

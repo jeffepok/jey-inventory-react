@@ -1,10 +1,11 @@
 import axios from 'axios';
 import * as constants from "../utils/constants";
+import { User } from '../interfaces';
 
 export default class AuthService {
 
-    async login(username, password) {
-        const data = {
+    async login(username:string , password:string) {
+        const data:User = {
             username: username,
             password: password
         }

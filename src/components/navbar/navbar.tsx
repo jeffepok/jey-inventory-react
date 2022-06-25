@@ -6,10 +6,11 @@ import { useDispatch, useSelector } from 'react-redux';
 import ItemsService from '../../services/items';
 import UserService from '../../services/user';
 import * as itemsActions from '../../store/items';
+import { State } from '../../interfaces/state';
 
 export default function NavBar() {
   const [showUserMenu, setShowUserMenu] = useState(false);
-  const username = useSelector(state => state.user.username);
+  const username = useSelector((state: State) => state.user.username);
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const logout = () => {
@@ -20,8 +21,8 @@ export default function NavBar() {
       navigate("/login");
     }
   }
-  const isAuthenticated = useSelector(state => state.user.isAuthenticated);
-  const items = useSelector(state => state.items);
+  const isAuthenticated = useSelector((state: State) => state.user.isAuthenticated);
+  const items = useSelector((state: State) => state.items);
 
   useEffect(()=>{
     if (isAuthenticated) {
@@ -48,7 +49,7 @@ export default function NavBar() {
       <div className="w-full container mx-auto flex flex-wrap items-center mt-0 pt-3 pb-3 md:pb-0">
 
         <div className="w-1/2 pl-2 md:pl-0">
-          <Link to="/" className="text-gray-900 text-base xl:text-xl no-underline hover:no-underline font-bold" href="#">
+          <Link to="/" className="text-gray-900 text-base xl:text-xl no-underline hover:no-underline font-bold">
             <i className="fas fa-sun text-pink-600 pr-3"></i> Jey Inventory
           </Link>
         </div>

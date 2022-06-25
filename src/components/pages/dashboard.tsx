@@ -2,10 +2,11 @@ import React from "react";
 import NavBar from '../navbar/navbar';
 import Card from '../card/card';
 import { useSelector } from 'react-redux';
+import { State } from "../../interfaces";
 
 
 export default function Dashboard() {
-    const items = useSelector(state => state.items);
+    const items = useSelector((state: State) => state.items);
 
     const Icon = () => {
         return (

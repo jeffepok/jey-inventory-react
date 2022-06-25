@@ -4,10 +4,11 @@ import Card from '../card/card';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import AddItemModal from '../forms/addItem';
+import { State } from '../../interfaces';
 
 
 export default function ItemListing() {
-    const items = useSelector(state => state.items);
+    const items = useSelector((state: State) => state.items);
 
     const ItemImage = (props) => {
         return (
